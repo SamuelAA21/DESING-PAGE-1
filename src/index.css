@@ -9,50 +9,66 @@
   }
 
   body {
-    @apply bg-gray-50 text-slate-800 antialiased;
+    @apply bg-white text-slate-800 antialiased;
   }
 }
 
 @layer components {
   .card {
-    @apply bg-white rounded-lg border border-slate-200 shadow-soft;
+    @apply bg-white rounded-xl border border-gray-200 shadow-sm;
   }
 
   .btn-primary {
-    @apply bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold 
-           hover:bg-primary-800 focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50
+    @apply bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold 
+           hover:bg-orange-600 focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50
            transition-all duration-200 ease-in-out transform hover:-translate-y-0.5
-           shadow-primary hover:shadow-primary-lg;
+           shadow-lg hover:shadow-xl;
   }
 
   .btn-secondary {
-    @apply bg-white text-slate-700 px-4 py-2 rounded-lg font-medium border border-slate-200
-           hover:bg-slate-50 hover:border-primary-300 focus:ring-2 focus:ring-primary-500 focus:ring-opacity-20
+    @apply bg-white text-gray-700 px-4 py-2 rounded-lg font-medium border border-gray-200
+           hover:bg-gray-50 hover:border-orange-300 focus:ring-2 focus:ring-orange-500 focus:ring-opacity-20
            transition-all duration-200 ease-in-out;
   }
 
   .table-header {
-    @apply bg-slate-50 text-slate-600 font-semibold text-xs uppercase tracking-wider;
+    @apply bg-gray-50 text-gray-600 font-semibold text-xs uppercase tracking-wider;
   }
 
   .table-cell {
-    @apply px-4 py-5 text-sm text-slate-900 border-b border-slate-200;
+    @apply px-4 py-5 text-sm text-gray-900 border-b border-gray-200;
   }
 
   .dropdown {
-    @apply absolute mt-1 bg-white border border-slate-200 rounded-lg shadow-soft-lg z-50 
+    @apply absolute mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 
            min-w-[120px] py-2 transform transition-all duration-200 ease-out;
   }
 
   .dropdown-item {
-    @apply px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 cursor-pointer
+    @apply px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer
            transition-colors duration-150 ease-in-out;
+  }
+
+  .sidebar-item {
+    @apply p-3 rounded-xl transition-all duration-200 cursor-pointer;
+  }
+
+  .sidebar-item-active {
+    @apply bg-orange-200;
+  }
+
+  .sidebar-item-filled {
+    @apply bg-orange-500 shadow-lg;
+  }
+
+  .sidebar-item-inactive {
+    @apply bg-orange-100/50 hover:bg-orange-200;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    background: linear-gradient(135deg, #4f46e5 0%, #6366f1 50%, #818cf8 100%);
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #dc2626 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -61,6 +77,15 @@
   .glass {
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .orange-gradient {
+    background: linear-gradient(
+      135deg,
+      #f57c00 0%,
+      #ff9800 24.75%,
+      #ffb74d 49.5%
+    );
   }
 }
 
@@ -76,17 +101,17 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #fbbf24;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #f59e0b;
 }
 
 /* Table row hover effect */
 tr:hover {
-  @apply bg-gradient-to-r from-primary-50/50 to-transparent;
+  @apply bg-gray-50;
 }
 
 /* Animation for table rows */
@@ -100,4 +125,40 @@ tbody tr:nth-child(even) {
 
 tbody tr:nth-child(odd) {
   animation-delay: 0.1s;
+}
+
+/* Orange theme specific styles */
+.orange-shadow {
+  box-shadow: 0 4px 12px rgba(245, 124, 0, 0.2);
+}
+
+.orange-shadow-lg {
+  box-shadow: 0 10px 30px rgba(245, 124, 0, 0.3);
+}
+
+/* Header gradient to match Figma */
+.header-gradient {
+  background: linear-gradient(
+    135deg,
+    #f57c00 0%,
+    #ff9800 24.75%,
+    #ffb74d 49.5%
+  );
+  box-shadow: 0px 10px 30px 0px rgba(245, 124, 0, 0.3);
+}
+
+/* Smooth transitions */
+* {
+  transition-property:
+    background-color, border-color, color, box-shadow, transform;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* Focus styles */
+button:focus,
+input:focus {
+  outline: none;
+  ring: 2px;
+  ring-color: rgba(249, 115, 22, 0.5);
 }
